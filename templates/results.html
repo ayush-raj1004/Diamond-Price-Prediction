@@ -1,0 +1,158 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Diamond Price Prediction Result</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background-color: #ffffff;
+            padding: 45px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333333;
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #007bff;
+            font-size: 23px;
+            margin-bottom: 20px;
+        }
+
+        .success-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .price-box {
+            background-color: #f0fff4;
+            border: 1px solid #c3e6cb;
+            border-radius: 10px;
+            padding: 25px 15px;
+            margin: 25px 0;
+        }
+
+        .price-label {
+            color: #555555;
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            color: #218838;
+            font-size: 32px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #777777;
+            font-size: 13px;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .price {
+                font-size: 26px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="success-icon">💎</div>
+
+        <h1>Diamond Price Prediction</h1>
+
+        <h2>Prediction Result</h2>
+
+        {% if final_result is defined and final_result is not none %}
+
+            <div class="price-box">
+
+                <div class="price-label">
+                    Estimated Diamond Price
+                </div>
+
+                <div class="price">
+                    {{ final_result }}
+                </div>
+
+            </div>
+
+        {% else %}
+
+            <div class="price-box">
+                <div class="price-label">
+                    Prediction result not received.
+                    Please try again.
+                </div>
+            </div>
+
+        {% endif %}
+
+        <a href="{{ url_for('predict_datapoint') }}" class="btn">
+            Predict Again
+        </a>
+
+        <div class="footer">
+            Diamond Price Prediction System
+        </div>
+
+    </div>
+
+</body>
+
+</html>
